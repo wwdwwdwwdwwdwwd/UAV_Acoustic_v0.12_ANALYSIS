@@ -1,0 +1,20 @@
+{
+  "version": "v0.12",
+  "timestamp": "2026-09-20T15:52:42.611595+08:00",
+  "command": [
+    "D:\\Download\\UAV_Acoustic_Project_v0.1\\UAV_Acoustic_Project\\.venv-r2\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "D:\\Download\\UAV_Acoustic_Project_v0.1\\UAV_Acoustic_Project\\release_open_source_baselines\\UAV_Acoustic_Realtime_AZEL_v0.12_ASYNC_TRACK_SEMANTIC\\_internal\\05_tests\\test_v12_async_architecture.py",
+    "-q"
+  ],
+  "returncode": 0,
+  "duration_s": 60.53099999999904,
+  "stdout": "..........                                                               [100%]\n10 passed in 35.13s\n",
+  "stderr": "",
+  "tracker_hz_mock_samid_sleep_5s": 12.820512820591752,
+  "tracker_updates_mock_samid_sleep_5s": 63,
+  "tracker_median_hz_realistic_samid_1p2s": 12.820512820591752,
+  "tracker_updates_realistic_samid_20s": 250,
+  "status": "PASS"
+}

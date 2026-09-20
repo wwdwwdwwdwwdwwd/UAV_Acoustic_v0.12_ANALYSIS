@@ -1,0 +1,80 @@
+hardware:
+  fs: 80000
+  channels: 128
+  udp_host: 0.0.0.0
+  udp_port: 6666
+  expected_source_ip: 192.168.0.100
+  expected_source_port: 5555
+  expected_datagram_bytes: 1280
+  socket_buffer_bytes: 16777216
+  geometry_csv: ../00_vendor/AC01_MainPCB_H1.0.2_MicPos_128.csv
+coordinates:
+  pcb_x_to_engineering_x_sign: -1
+  pcb_y_to_engineering_y_sign: 1
+mode: interactive
+performance:
+  samid_intraop_threads: 4
+  samid_interop_threads: 1
+  reserve_acquisition_cores: 1
+  reserve_system_cores: 1
+  acquisition_high_priority: true
+semantic:
+  track_interval_s: 1.0
+  stale_after_s: 2.5
+terminal:
+  refresh_hz: 4.0
+target_loss:
+  low_samid_threshold: 0.30
+  required_consecutive_low: 3
+  max_activity_delta_db: 1.5
+acquisition_guard:
+  shared_ring_s: 8.0
+  minimum_rate_ratio_1s: 0.98
+  minimum_audio_clock_ratio: 0.98
+  recovery_duration_s: 3.0
+  health_window_s: 5.0
+noise_calibration:
+  duration_s: 10.0
+  frame_ms: 100
+  representative_channels: 16
+  adaptive_background: false
+  bands_hz: [[30,100],[100,250],[250,500],[500,1000],[1000,2000],[2000,4000],[4000,8000]]
+noise_gate:
+  frame_ms: 100
+  hop_ms: 100
+  trigger_z: 6.0
+  trigger_delta_db: 3.0
+  minimum_triggered_bands: 1
+  persistence_required_frames: 3
+  persistence_window_frames: 5
+  search_cooldown_s: 2.0
+semantic_acquire_pipeline:
+  speed_of_sound_mps: 343.0
+  spatial_band_hz: [100,8000]
+  max_frequency_bins: 96
+  az_fov_deg: [-90.0,90.0]
+  el_fov_deg: [-45.0,45.0]
+  global_az_step_deg: 6.0
+  global_el_step_deg: 6.0
+  fine_step_deg: 2.0
+  local_step_deg: 2.0
+  search_top_k: 5
+  candidate_min_angular_separation_deg: 12.0
+  search_retry_s: 2.0
+  logger_queue_size: 8192
+  tracker:
+    alpha: 0.65
+    beta: 0.18
+    valid_score: 0.10
+    valid_peak_ratio: 1.0
+    coast_duration_s: 0.6
+    radius_min: 4.0
+    radius_max: 28.0
+    velocity_margin: 0.12
+    uncertainty_gain: 1.8
+    uncertainty_growth: 2.0
+diagnostics:
+  max_saved_searches: 3
+  save_first_valid_search: true
+  save_first_failed_search: true
+  save_first_acquire: true

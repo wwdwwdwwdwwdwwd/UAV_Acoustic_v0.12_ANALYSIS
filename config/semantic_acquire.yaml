@@ -1,0 +1,75 @@
+hardware:
+  fs: 80000
+  channels: 128
+  udp_host: 0.0.0.0
+  udp_port: 6666
+  expected_source_ip: 192.168.0.100
+  expected_source_port: 5555
+  expected_datagram_bytes: 1280
+  udp_timeout_s: 0.25
+  socket_buffer_bytes: 8388608
+  receive_buffer_bytes: 1048576
+  wire_format: payload_only_int16_le
+  reorder_vendor_channels: true
+  geometry_csv: ../00_vendor/AC01_MainPCB_H1.0.2_MicPos_128.csv
+coordinates:
+  pcb_x_to_engineering_x_sign: -1
+  pcb_y_to_engineering_y_sign: 1
+  pcb_y_physical_sign_evidence: UNVERIFIED
+processing:
+  doa_band_hz: [100, 8000]
+  feature_band_hz: [100, 8000]
+  nfft: 8192
+  sound_speed_mps: 343.0
+  healthy_channel_minimum: 120
+  dead_channel_rms_ratio: 0.02
+  clipping_threshold: 0.999
+realtime:
+  open_source_detector_adapter:
+    adapter_id: os02_samid_ast
+    upstream_name: SAMID AST
+    upstream_revision: 3a12f618dd8aebf180945bf04ebfeef262d65795
+    weight_sha256: 10455420F5AF15A7287BE1D32D37AD6B681F74E3C152FE3BF386FDB0A0427489
+    threshold: 0.5
+    window_s: 1.0
+    hop_s: 0.5
+    preprocessor: pinned local Hugging Face AutoFeatureExtractor
+semantic_acquire_pipeline:
+  acquisition_chunk_samples: 800
+  acquisition_ring_s: 8.0
+  enhanced_ring_s: 4.0
+  spatial_frame_s: 0.10
+  spatial_hop_s: 0.08
+  search_retry_s: 1.0
+  speed_of_sound_mps: 343.0
+  spatial_band_hz: [100, 8000]
+  max_frequency_bins: 96
+  az_fov_deg: [-90.0, 90.0]
+  el_fov_deg: [-45.0, 45.0]
+  global_az_step_deg: 6.0
+  global_el_step_deg: 6.0
+  fine_step_deg: 2.0
+  local_step_deg: 2.0
+  search_top_k: 5
+  candidate_min_angular_separation_deg: 12.0
+  semantic_torch_threads: 16
+  acquisition_warning_ratio: 0.90
+  logger_queue_size: 8192
+  tracker:
+    alpha: 0.65
+    beta: 0.18
+    valid_score: 0.10
+    valid_peak_ratio: 1.0
+    coast_duration_s: 0.6
+    radius_min: 4.0
+    radius_max: 28.0
+    velocity_margin: 0.12
+    uncertainty_gain: 1.8
+    uncertainty_growth: 2.0
+locks:
+  packet_header_sequence_timestamp: UNKNOWN
+  low_frequency_raw_below_1khz: USABLE_WITH_LIMITATIONS_SEE_REPORT
+  cross_device_sample_sync: NOT_IMPLEMENTED_BY_VENDOR_YET
+  real_anc_reference_mic: UNRESOLVED
+  range_100_150m_in_80_90db: REQUIRES_FIELD_TEST
+  array_diameter_requirement_30cm: NOT_MET_CURRENT_HW_19_5cm
